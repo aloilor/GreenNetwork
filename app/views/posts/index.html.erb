@@ -1,0 +1,25 @@
+<h1>Posts List</h1>
+
+
+ <table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Image</th>
+    <th>Tag</th>
+    <th>Position</th>
+  </tr>
+
+  <% @posts.each do |post| %>
+  <tr>
+    <td><%= post.title %></td>
+    <td><%= post.description %></td>
+    <td><%= post.image %></td>
+    <td><%= post.tag%></td>
+    <td><%= post.position%></td>
+  </tr>
+
+
+  <% end %> 
+</table>
+<button type="button" class="btn btn-primary">Bootstrap check</button>
