@@ -14,36 +14,10 @@
   </head>
 
   <body>
+    <%# parziale per l'header %>
+    <%= render "layouts/header" %>
     
-    <!-- Navbar di boostrap -->
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-      <div class="container-fluid">
-        
-
-        <ul class="navbar-nav">
-          
-          <a class="navbar-brand mb-0 h1" href = "#">GreenNetwork</a>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contacts</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          
-          <li>
-            <a class="nav-link"href="#">Sign-up</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-
     <%= yield %>
+  
   </body>
 </html>
