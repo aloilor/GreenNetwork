@@ -1,62 +1,10 @@
 <h1>Posts List</h1>
 
 <% @posts.each do |post| %>
-
-  <div class="container">
-
-    <div class="card gedf-card">
-      <div class="card-header">
-          <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex justify-content-between align-items-center">
-                  <div class="mr-2">
-                  <%# immagine profilo %>
-                      <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-                  </div>
-                  <div class="ml-2">
-                      <div class="h5 m-3">Autore</div>
-                  </div>
-              </div>
-          </div>
-          <div class="dropdown" style="margin-left: 1070px;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Options
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#"> <%= link_to 'Edit', edit_post_path(post)%></a></li>
-              <li><a class="dropdown-item" href="#"><%= link_to 'Show', post %></a></li>
-            </ul>
-          </div>
-        
-      </div>
-      <div class="card-body">
-          <div class="text-muted h7 mb-2">Data Time</div>
-          <h2 class="card-title"><%= post.title %></h2>
   
-
-          <p class="card-text">
-            <%= post.description %>
-          </p>
-          <p class="card-text">
-            <%= post.tag%>
-          </p>
-          <p class="card-text">
-            immagine
-            <%= post.image %>
-          </p>
-          <p class="card-text">
-            <%= post.position%>
-          </p>
-          
-          
-      </div>
-      <div class="card-footer">
-          <a href="#" class="card-link">Like</a>
-          <a href="#" class="card-link">Comment</a>
-      </div>
-    </div>
-
-</div>
-
+  <%# usato un parziale in quanto sia index che show fanno riferimento alla stessa interfaccia html post %>
+  <%= render 'post', post: post %>
+  
 
 <% end %> 
 
