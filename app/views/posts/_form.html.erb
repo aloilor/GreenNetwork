@@ -1,62 +1,52 @@
 <%= form_with model: @post do |form| %>
 
+  <div class="container col-5">
+    <form>
+      <div class="row mb-3">
+          <%= form.label :title, class:"col-sm-2 col-form-label"%>
+        <div class="col-sm-7">
+          <%= form.text_field :title, class:"form-control" %>
+        </div>
+      </div>
+      
+      <div class="form-floating row mb-3">
+        <div class="row mb-3">
+          <%= form.label :description, class:"col-sm-2 col-form-label"%>
+        <div class=" col-sm-10">
+          <%= form.text_area :description, class:"form-control", size: "70x5" %>
+        </div>
+      </div>
+      
+      <div class="row mb-3">
+          <%= form.label :position, class:"col-sm-2 col-form-label"%>
+        <div class="col-sm-7">
+          <%= form.text_field :position, class:"form-control" %>
+        </div>
+      </div>
 
-  
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_area :image %>
-  </div>
+      <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Tag</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <%= form.radio_button :tag, 'Post', class:"form-check-input", type:"radio", name:"gridRadios", id:"gridRadios2"%>
+            <%= form.label :tag,'Post', class:"form-check-label", for:"gridRadios2" %>
+          </div>
+          <div class="form-check">
+            <%= form.radio_button :tag,'Event', class:"form-check-input ", type:"radio", name:"gridRadios", id:"gridRadios2"%>
+            <%= form.label :tag, 'Event', class:"form-check-label", for:"gridRadios2" %>
+          </div>
+        </div>
+      </fieldset>
 
-  <div class="field">
-    <%= form.label :tag %>
+      <div class="mb-3">
+        <div class="col-sm-5">
+        <label for="formFile" class="form-label">Upload an image</label>
+        <%= form.file_field :image, class:"form-control", type:"file", id:"formFile"%>
+        </div>
+      </div>
+
+      <%= form.submit "Submit", class: "btn btn-default btn-primary col-sm-3" %>  
+    </form>
     
   </div>
-
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.text_area :position %>
-  </div>
-  
-  <%= form.submit %>
-<div class = "container col-5" >
-<form>
-  
-  <div class="row mb-3">
-    <label for="inputText" class="col-sm-2 col-form-label"> 
-      <%= form.label :title %>
-    </label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputText" <%= form.text_field :title %>
-    </div>
-  </div>
-  
-  <div class="row mb-3">
-    <label for="floatingTextarea2" class="col-sm-2 col-form-label">
-      <%= form.label :description %>
-    </label>
-    <div class="col-sm-10">
-      <textarea class="form-control" id="floatingTextarea2" style="height: 100px"
-        <%= form.text_area :description %>
-    </div>
-  </div>
-  
-  <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-2 pt-0">Tag</legend>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <%= form.radio_button :tag, "tag" %>
-        <%= form.label :tag, "Post" %>
-      </div>
-      <div class="form-check">
-        <%= form.radio_button :tag, "tag" %>
-        <%= form.label :tag, "Event" %>
-      </div>
-    </div>
-  </fieldset>
-  
-  
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
-</div>
-
 <% end %>
