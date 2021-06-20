@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="card gedf-card" style = "margin-top: 2%">
+    <div class="card gedf-card" style = "margin-top: 2%; margin-bottom: 1%">
       <div class="card-header">
           <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex justify-content-between align-items-center">
@@ -14,16 +14,6 @@
                       <div class="h5 m-3">Autore</div>
                   </div>
               </div>
-
-              <div class="dropdown" style="">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Options
-                </button>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#"><%= link_to 'Show', post%></a></li> 
-                </ul>
-              </div>
           </div>
       </div>
 
@@ -31,7 +21,7 @@
       
           <h2 class="card-title"><b><%= link_to post.title, post %></b></h2>
 
-          <div class="text-muted h7 mb-2">Data Time</div>
+          <p class="text-muted h7 mb-2"><%= post.created_at.strftime("Created at %d/%m/%Y, %I:%M%p") %></p>
           
           <p class="card-text">
             immagine
