@@ -28,8 +28,12 @@ class PostsController < ApplicationController
 
     def update 
         @post = Post.find(params[:id])
-        @post.image.purge
-        @post.image.attach(params[:post][:image])
+
+        #Facciamo in modo che se nel form di edit l'immagine non venga reinserita, venga tenuta la precedente collegata al post
+        if !params[:post][:image].nil?
+            @post.image.attach(params[:post][:image])
+        end
+        
         if @post.update(post_params)
           redirect_to @post
         else

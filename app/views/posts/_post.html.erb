@@ -25,7 +25,10 @@
           
           <div class = "d-inline-flex align-items-center flex-row">
             <div class="p-2">
-              <%= image_tag post.image, style: "width:35%;", class: "border border-success rounded border-2" %>
+              <%# Effettuiamo il check, se l'immagine è effettivamente associata al record%>
+              <% if post.image.attached? %>
+                <%= image_tag post.image, style: "width:35%;", class: "border border-success rounded border-2" %>
+              <% end %>
             </div>
 
             <div class="p-2">
