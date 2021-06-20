@@ -1,15 +1,6 @@
 <%= form_with model: @post do |form| %>
 
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
   
   <div class="field">
     <%= form.label :image %>
@@ -18,7 +9,7 @@
 
   <div class="field">
     <%= form.label :tag %>
-    <%= form.text_area :tag %>
+    
   </div>
 
   <div class="field">
@@ -27,5 +18,45 @@
   </div>
   
   <%= form.submit %>
+<div class = "container col-5" >
+<form>
+  
+  <div class="row mb-3">
+    <label for="inputText" class="col-sm-2 col-form-label"> 
+      <%= form.label :title %>
+    </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputText" <%= form.text_field :title %>
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <label for="floatingTextarea2" class="col-sm-2 col-form-label">
+      <%= form.label :description %>
+    </label>
+    <div class="col-sm-10">
+      <textarea class="form-control" id="floatingTextarea2" style="height: 100px"
+        <%= form.text_area :description %>
+    </div>
+  </div>
+  
+  <fieldset class="row mb-3">
+    <legend class="col-form-label col-sm-2 pt-0">Tag</legend>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <%= form.radio_button :tag, "tag" %>
+        <%= form.label :tag, "Post" %>
+      </div>
+      <div class="form-check">
+        <%= form.radio_button :tag, "tag" %>
+        <%= form.label :tag, "Event" %>
+      </div>
+    </div>
+  </fieldset>
+  
+  
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+</div>
 
 <% end %>
