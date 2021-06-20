@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
     def index
-        @posts = Post.all
+        @posts = Post.all.order("created_at DESC")
     end
 
     def show
@@ -27,4 +27,12 @@ class PostsController < ApplicationController
     def post_params
         params.require(:post).permit(:title, :description, :image, :tag, :position)
     end
+
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+    
+        redirect_to root_path
+    end
+    
 end
