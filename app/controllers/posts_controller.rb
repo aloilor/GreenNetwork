@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
     def index
-        @posts = Post.all.order("created_at DESC")
+        @posts = Post.all.order("created_at DESC").with_attached_image
     end
 
     def new
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
-
+        @post.image.attach(params[:post][:image])
         if @post.save
             redirect_to @post
         else
@@ -28,6 +28,8 @@ class PostsController < ApplicationController
 
     def update 
         @post = Post.find(params[:id])
+        @post.image.purge
+        @post.image.attach(params[:post][:image])
         if @post.update(post_params)
           redirect_to @post
         else
@@ -46,7 +48,7 @@ class PostsController < ApplicationController
     private 
     
     def post_params
-        params.require(:post).permit(:title, :description, :image, :tag, :position)
+        params.require(:post).permit(:title, :description, :tag, :position, :image)
     end
 
     

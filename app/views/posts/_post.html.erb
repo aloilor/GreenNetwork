@@ -23,19 +23,20 @@
 
           <p class="text-muted h7 mb-2"><%= post.created_at.strftime("Created at %d/%m/%Y, %I:%M%p") %></p>
           
-          <p class="card-text">
-            Immagine:
-            <%= post.image %>
-          </p>
+          <div class = "d-inline-flex align-items-center flex-row">
+            <div class="p-2">
+              <%= image_tag post.image, style: "width:35%;", class: "border border-success rounded border-2" %>
+            </div>
 
-          <p class="card-text">
-            <%= post.description %>
-          </p>
+            <div class="p-2">
+              <%= post.description %>
+            </div>
+          </div>
       </div>
       
       <div class="card-footer">
 
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center justify-content-start">
             <a href="#" class="card-link">Like</a>
             <a href="#" class="card-link">Comment</a>
             

@@ -40,8 +40,8 @@
 
       <div class="mb-3">
         <div class="col-sm-5">
-        <label for="formFile" class="form-label">Upload an image</label>
-        <%= form.file_field :image, class:"form-control", type:"file", id:"formFile"%>
+        <%= form.label :image, "Upload your image" %>
+        <%= form.file_field :image, class:"form-control" %>
         </div>
       </div>
 
