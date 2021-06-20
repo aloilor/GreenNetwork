@@ -1,6 +1,6 @@
 <h1>Editing Post</h1>
 
     <%= render 'form', post: @post %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+    <hr>
+<%= link_to ' Back', posts_path, class: "bi bi-arrow-left-circle btn btn-default btn-primary " %> 
+<%= link_to 'Show', @post, class: " btn btn-default btn-primary " %> 
