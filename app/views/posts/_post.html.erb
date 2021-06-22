@@ -36,14 +36,36 @@
       <div class="card-footer">
 
           <div class="d-flex align-items-center justify-content-start">
-            <a href="#" class="card-link">Like</a>
-            <a href="#" class="card-link">Comment</a>
-            
+            <span class = "like_count" <%post.id%>'>
+              <%= post.get_likes.size %>
+              <i class="fas fa-thumbs-up"></i>
+            </span>
+
+            &nbsp; &nbsp;
+            <% if user_signed_in? %>
+              <a href="#" class="card-link">
+                <% if current_user.liked? post %>
+                  <div> <%= link_to like_post_path(post, 'unlike'), class: "liked-btn", method: :put, remote: :true do %>
+                    Liked
+                  </div>
+                <% end %>
+                
+                <% else %>
+                  <div> <%= link_to like_post_path(post, 'like'), class: "like-btn", method: :put, remote: :true do %>
+                    Like
+                  </div>
+                <% end %>
+                <% end %>              
+              </a>
+              
+              &nbsp; &nbsp;
+
+              <a href="#" class="card-link">Comment</a>
+              
+            <% end%>
             <p class="card-text ms-auto">
               <span class="badge bg-primary"><%= post.tag%></span> &nbsp; <%= post.position%>
             </p>
-            
-
           </div>
       </div>
     </div>

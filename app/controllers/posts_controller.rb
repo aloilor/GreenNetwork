@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+    respond_to :js, :html, :json
+
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
@@ -51,6 +53,17 @@ class PostsController < ApplicationController
     
         redirect_to root_path
     end
+
+    def like
+        @post = Post.find(params[:id])
+        if params[:format] == 'like'
+            @post.liked_by current_user
+        elsif params[:format] == 'unlike'
+            @post.unliked_by current_user
+        end   
+        redirect_back(fallback_location: root_path) 
+    end
+
     
     private 
     
