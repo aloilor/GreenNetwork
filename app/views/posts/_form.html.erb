@@ -1,52 +1,52 @@
 <%= form_with model: @post do |form| %>
 
   <div class="container col-5">
-    <form>
+ 
+    <div class="row mb-3">
+        <%= form.label :title, class:"col-sm-2 col-form-label"%>
+      <div class="col-sm-7">
+        <%= form.text_field :title, class:"form-control" , :required=> true%>
+      </div>
+    </div>
+    
+    <div class="form-floating row mb-3">
       <div class="row mb-3">
-          <%= form.label :title, class:"col-sm-2 col-form-label"%>
-        <div class="col-sm-7">
-          <%= form.text_field :title, class:"form-control" , :required=> true%>
-        </div>
+        <%= form.label :description, class:"col-sm-2 col-form-label"%>
+      <div class=" col-sm-10">
+        <%= form.text_area :description, class:"form-control", size: "70x5" %>
       </div>
-      
-      <div class="form-floating row mb-3">
-        <div class="row mb-3">
-          <%= form.label :description, class:"col-sm-2 col-form-label"%>
-        <div class=" col-sm-10">
-          <%= form.text_area :description, class:"form-control", size: "70x5" %>
-        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <%= form.label :position, class:"col-sm-2 col-form-label"%>
+      <div class="col-sm-7">
+        <%= form.text_field :position, class:"form-control" %>
       </div>
-      
-      <div class="row mb-3">
-          <%= form.label :position, class:"col-sm-2 col-form-label"%>
-        <div class="col-sm-7">
-          <%= form.text_field :position, class:"form-control" %>
-        </div>
-      </div>
+    </div>
 
-      <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-2 pt-0">Tag</legend>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <%= form.radio_button :tag, "Post", class:"form-check-input"%>
-            <%= form.label :tag_post,"Post", class:"form-check-label"%>
-          </div>
-          <div class="form-check">
-            <%= form.radio_button :tag,"Event", class:"form-check-input "%>
-            <%= form.label :tag_event, "Event", class:"form-check-label"%>
-          </div>
+    <fieldset class="row mb-3">
+      <legend class="col-form-label col-sm-2 pt-0">Tag</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <%= form.radio_button :tag, "Post", class:"form-check-input"%>
+          <%= form.label :tag_post,"Post", class:"form-check-label"%>
         </div>
-      </fieldset>
-
-      <div class="mb-3">
-        <div class="col-sm-5">
-        <%= form.label :image, "Upload your image" %>
-        <%= form.file_field :image, class:"form-control" %>
+        <div class="form-check">
+          <%= form.radio_button :tag,"Event", class:"form-check-input "%>
+          <%= form.label :tag_event, "Event", class:"form-check-label"%>
         </div>
       </div>
+    </fieldset>
 
-      <%= form.submit "Submit", class: "btn btn-default btn-success col-sm-2" %>  
-    </form>
+    <div class="mb-3">
+      <div class="col-sm-5">
+      <%= form.label :image, "Upload your image" %>
+      <%= form.file_field :image, class:"form-control" %>
+      </div>
+    </div>
+
+    <%= form.submit "Submit", class: "btn btn-default btn-success col-sm-2" %>  
+
     
   </div>
 <% end %>
