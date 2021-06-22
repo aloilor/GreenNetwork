@@ -29,6 +29,11 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
+      <div class = "field">
+        <%= f.label :propic, "Upload your image" %>
+        <%= f.file_field :propic, direct_upload: true %>
+      </div>
+      
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>

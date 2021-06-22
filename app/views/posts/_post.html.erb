@@ -6,7 +6,10 @@
               <div class="d-flex justify-content-between align-items-center">
                   <div class="mr-2">
                   <%# immagine profilo %>
-                      <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                    <% if post.user.propic.attached? %> 
+                      <p> image attached </p>
+                      <% image_tag post.user.propic, style: "width:35%;", class: "border border-success rounded border-2 float-left", align:"left" %>
+                    <% end %>                    
                   </div>
 
                   <!-- Nome utente -->
