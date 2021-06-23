@@ -17,5 +17,17 @@
         <%end%> 
     </p>
 
-    
+    <h3>Comments:</h3>
+    <% if @post.comments.empty? %>
+        <p>
+            No comments for this post...
+        </p>
+    <% else %>
+            <% @post.comments.each do %>
+                <%= render comment %>
+            <% end %>
+    <% end %>
+
+
+
 </div>

@@ -1,13 +1,8 @@
-<%= form_with model: @post do |form| %>
-
-  <div class="container col-5">
-    <div class="form-floating row mb-3">
-      <div class="row mb-3">
-        <%= form.label :comment, class:"col-sm-2 col-form-label"%>
-      <div class=" col-sm-10">
-        <%= form.text_area :comment, class:"form-control", size: "70x5" %>
-      </div>
-    </div>
-    <%= form.submit "Submit", class: "btn btn-default btn-success col-sm-2" %>   
+<%= form_tag post_comments_path, :method => :post do %>
+  <div class="container col-5"> 
+    <%= label :comment, :comments, 'Comment' %>
+    <%= text_field :comment, :comments %>
+    <br/><br/>
+    <%= submit_tag 'Add comment' %>
   </div>
 <% end %>

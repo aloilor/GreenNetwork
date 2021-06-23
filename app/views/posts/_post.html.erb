@@ -32,11 +32,11 @@
       </div>
       
       <div class="card-footer">
-
           <div class="d-flex align-items-center justify-content-start">
-            <a href="#" class="card-link">Like </a>
-            <%= link_to 'Add Comment', new_post_comments_path(@post),class: "card-link " %> 
-            
+            <a href="#" class="card-link" >Like </a>
+            <a href = "#"><%= link_to 'Comment', new_post_comments_path(post, 'comment'), style: "margin-left:0.5%" %></a>
+
+
             <p class="card-text ms-auto">
               <span class="badge bg-primary"><%= post.tag%></span> &nbsp; <%= post.position%>
             </p>

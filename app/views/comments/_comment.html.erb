@@ -1,0 +1,24 @@
+<div class="container">
+
+    <div class="card gedf-card" style = "margin-top: 2%; margin-bottom: 1%">
+      <div class="card-header">
+          <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="mr-2">
+                  <%# immagine profilo %>
+                      <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                  </div>
+
+                  <!-- Nome utente -->
+                  
+              </div>
+          </div>
+      </div>
+
+    <div class="card-body">
+        <p class="text-muted h7 mb-2"><%= comment.created_at.strftime("Created at %d/%m/%Y, %I:%M%p") %></p>
+        <div class="h5" >
+            <%= comment.comment %>
+        </div> 
+    </div>
+</div>
