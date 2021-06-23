@@ -1,0 +1,25 @@
+<h1>Your Posts</h1>
+
+<div class = "row">
+    <div class = "col-8 offset">
+        <% if @user.posts.any? %>
+            <%= render @posts %>
+        <% end %>
+    </div>
+    <div class = "col-4">    
+        <div class="card border-0" style="margin-right:50px">
+            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class= "rounded-circle" 
+            style= "width: 200px; height: 200px;margin-left:180px">
+            <h2 class="text-center"><%=current_user.username%></h2>
+            <hr>
+            <div class="card-body">
+            <h5 class="card-title">Description</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural 
+            lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary me-md-3" type="button">
+                <i class="bi bi-gear-fill"></i>  Settings</button>
+        </div>
+</div>
+     
