@@ -16,9 +16,10 @@ class PostsController < ApplicationController
         @post = current_user.posts.build(post_params)
         @post.image.attach(params[:post][:image])
         if @post.save
-            redirect_to @post, notice: "Post created succesfully"
+            flash[:notice] = "Post created successfully"
+            redirect_to @post
         else
-            render 'new'
+            render :new
         end
     end
 
@@ -39,7 +40,8 @@ class PostsController < ApplicationController
         end
         
         if @post.update(post_params)
-          redirect_to @post, notice: "Post updated succesfully"
+            flash[:notice] = "Post updated succesfully"
+            redirect_to @post
         else
           render :edit
         end
@@ -49,8 +51,9 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-    
-        redirect_to root_path, notice: "Post deleted succesfully"
+        
+        flash[:notice] = "Post deleted succesfully"
+        redirect_to root_path
     end
 
     def like
