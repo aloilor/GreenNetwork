@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-    respond_to :js, :html, :json
 
     before_action :authenticate_user!, except: [:index, :show]
 
@@ -17,7 +16,7 @@ class PostsController < ApplicationController
         @post = current_user.posts.build(post_params)
         @post.image.attach(params[:post][:image])
         if @post.save
-            redirect_to @post
+            redirect_to @post, notice: "Post created succesfully"
         else
             render 'new'
         end
@@ -40,7 +39,7 @@ class PostsController < ApplicationController
         end
         
         if @post.update(post_params)
-          redirect_to @post
+          redirect_to @post, notice: "Post updated succesfully"
         else
           render :edit
         end
@@ -51,7 +50,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         @post.destroy
     
-        redirect_to root_path
+        redirect_to root_path, notice: "Post deleted succesfully"
     end
 
     def like
@@ -64,15 +63,9 @@ class PostsController < ApplicationController
         redirect_back(fallback_location: root_path) 
     end
 
-    
     private 
-    
     def post_params
         params.require(:post).permit(:title, :description, :tag, :position, :image)
     end
 
-   
-
-    
-    
 end
