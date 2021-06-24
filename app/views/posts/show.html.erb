@@ -16,18 +16,53 @@
                 class: "bi bi-trash-fill btn btn-default btn-danger "  %>
         <%end%> 
     </p>
+</div>
 
-    <h3>Comments:</h3>
-    <% if @post.comments.empty? %>
-        <p>
-            No comments for this post...
-        </p>
-    <% else %>
-            <% @post.comments.each do %>
-                <%= render comment %>
+<div class="container d-flex align-items-center" style = "margin-top:0.5%">
+        <div class="h5" >
+            Comments:
+        </div> 
+        
+        <div class="h5">
+            <% if @post.comments.empty? %>
+                <h3> No comments yet! </h3>
             <% end %>
+        </div>
+
+        <div class="h5">
+        <%@post.comments.each do |comment| %>
+	        <p>
+		        <h3>>Comment: </h3><%= comment.comments %> <br>
+            </p>
+
+	        <p>
+  	            <ul>
+  	                <li> <%= link_to "Edit Comment", edit_post_comment_path(comment.post, comment)  %></li>
+  	                <li><%= link_to 'Delete Comment', [comment.post, comment],
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
+	                </li>
+	            </ul>
+            </p>
+        
+        <% end %>
+        </div>
+</div>
+
+<hr>
+<div class="container d-flex align-items-center" style = "margin-top:0.5%">
+    <h2> Add a Comment </h2>
+
+    <%= form_with model: [ @post, @post.comments.build ] do |form| %>
+        <p>
+            <%= form.label :comments %><br>
+            <%= form.text_area :comments %>
+        </p>
+
+        <p>
+  	
+            <%= form.submit "Save Comment" %>
+        </p>
     <% end %>
-
-
 
 </div>
