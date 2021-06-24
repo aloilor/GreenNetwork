@@ -18,10 +18,16 @@
     </p>
 </div>
 
-<div class="container d-flex align-items-center" style = "margin-top:0.5%">
-        <div class="h5" >
-            Comments:
-        </div> 
+<div class="d-flex justify-content-between align-items-center">
+<p>
+    <ul>
+        <h1>Comments:</h1>
+    </ul>
+</p>
+</div>
+
+<div class="container">
+<div class="card gedf-card" style = "margin-top: 2%; margin-bottom: 1%">
         
         <div class="h5">
             <% if @post.comments.empty? %>
@@ -31,38 +37,68 @@
 
         <div class="h5">
         <%@post.comments.each do |comment| %>
+
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mr-2">
+                        <%# immagine profilo %>
+                        <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                    </div>
+
+                    <!-- Nome utente -->
+                  
+                </div>
+            </div>
+        </div>
 	        <p>
-		        <h3>>Comment: </h3><%= comment.comments %> <br>
+                <ul>
+		            <%= comment.comments %> <br>
+                </ul>
             </p>
 
 	        <p>
   	            <ul>
-  	                <li> <%= link_to "Edit Comment", edit_post_comment_path(comment.post, comment)  %></li>
-  	                <li><%= link_to 'Delete Comment', [comment.post, comment],
+  	                 <%= link_to "Edit", edit_post_comment_path(comment.post, comment)  %>
+  	                <%= link_to 'Delete', [comment.post, comment],
                         method: :delete,
                         data: { confirm: "Are you sure?" } %>
-	                </li>
+	                
 	            </ul>
             </p>
         
         <% end %>
         </div>
 </div>
+</div>
 
 <hr>
-<div class="container d-flex align-items-center" style = "margin-top:0.5%">
-    <h2> Add a Comment </h2>
+
+<div class="d-flex justify-content-between" style= "margin-left: 14%">
+
+    <ul>
+        <h2>Add a comment </h2>
+    </ul>
+</div>
+
+<div class="container d-flex" style = "margin-top:0.5%; margin-left : 0.5%">
 
     <%= form_with model: [ @post, @post.comments.build ] do |form| %>
-        <p>
-            <%= form.label :comments %><br>
-            <%= form.text_area :comments %>
-        </p>
+        <div class="container col-5">
+            <div class="form-floating row mb-3">
+                <div class="row mb-3">
+                    <%= form.label :comments, class:"col-sm-2 col-form-label"%>
+                </div>
+                <div class=" col-sm-10">
+                    <%= form.text_area :comments, class:"form-control", size: "75x4" %>
+                </div>
+            </div>
+            
+        </div>
+        <div class="container" style= "margin-left: 30%">
+            <%= form.submit "Submit", class: "btn btn-default btn-success col-sm-2" %>  
+        </div>
 
-        <p>
-  	
-            <%= form.submit "Save Comment" %>
-        </p>
     <% end %>
 
 </div>

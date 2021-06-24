@@ -1,0 +1,12 @@
+<h2> Edit a Review </h2>
+
+<%= form_with model: [ @comment.post, @comment ] do |form| %>
+  <p>
+    <%= form.label :comments %><br>
+    <%= form.text_area :comments %>
+  </p>
+
+  <p>
+    <%= form.submit "Save Comment" %>
+  </p>
+<% end %>
