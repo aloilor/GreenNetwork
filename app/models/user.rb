@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
+  acts_as_voter
+  has_one_attached :propic, :dependent => :destroy
 end

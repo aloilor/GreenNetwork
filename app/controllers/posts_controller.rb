@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
@@ -15,9 +16,10 @@ class PostsController < ApplicationController
         @post = current_user.posts.build(post_params)
         @post.image.attach(params[:post][:image])
         if @post.save
+            flash[:notice] = "Post created successfully"
             redirect_to @post
         else
-            render 'new'
+            render :new
         end
     end
 
@@ -39,7 +41,8 @@ class PostsController < ApplicationController
         end
         
         if @post.update(post_params)
-          redirect_to @post
+            flash[:notice] = "Post updated succesfully"
+            redirect_to @post
         else
           render :edit
         end
@@ -49,18 +52,24 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-    
+        
+        flash[:notice] = "Post deleted succesfully"
         redirect_to root_path
     end
-    
+
+    def like
+        @post = Post.find(params[:id])
+        if params[:format] == 'like'
+            @post.liked_by current_user
+        elsif params[:format] == 'unlike'
+            @post.unliked_by current_user
+        end   
+        redirect_back(fallback_location: root_path) 
+    end
+
     private 
-    
     def post_params
         params.require(:post).permit(:title, :description, :tag, :position, :image)
     end
 
-   
-
-    
-    
 end

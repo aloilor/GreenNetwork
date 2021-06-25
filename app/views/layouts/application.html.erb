@@ -18,8 +18,14 @@
   <body>
     <%# parziale per l'header %>
     <%= render "layouts/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <%# messaggi flash%>
+    <% flash.each do |type, msg| %>
+        <div class = "alert alert-success">
+            <%= msg %>
+        </div>
+    <% end %>
+
     <%= yield %>
     
 

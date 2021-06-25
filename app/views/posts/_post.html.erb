@@ -2,16 +2,16 @@
 
     <div class="card gedf-card" style = "margin-top: 2%; margin-bottom: 1%">
       <div class="card-header">
-          <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex justify-content-between align-items-center">
-                  <div class="mr-2">
-                  <%# immagine profilo %>
-                      <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-                  </div>
+          <div class="d-flex justify-content-start align-items-center">
+            <span class = "text-muted h7"> Posted by: </span>
 
-                  <!-- Nome utente -->
-                  
-              </div>
+            <%# Immagine profilo %>
+            <% if post.user.propic.attached? %> 
+              <%= image_tag post.user.propic, style: "width: 55px; height: 55px; margin-left: 2%", class: "rounded-circle border border-success"%>
+            <% end %>                    
+            
+            <%# Nome utente %>
+            <span class="h5" style = "margin-left: 0.5%; margin-bottom: 1%; margin-top: 1%;"><b><%=post.user.username%></b></span>
           </div>
       </div>
 
@@ -21,27 +21,50 @@
 
           <p class="text-muted h7 mb-2"><%= post.created_at.strftime("Created at %d/%m/%Y, %I:%M%p") %></p>
          
-          <%# Effettuiamo il check, se l'immagine è effettivamente associata al record%>
-    
+          <%# Effettuiamo il check, se l'immagine è effettivamente associata al record, e mostriamola %>
           <% if post.image.attached? %> 
             <%= image_tag post.image, style: "width:35%;", class: "border border-success rounded border-2 float-left", align:"left" %>
           <% end %>
+
           <div class="h5" >
             <%= post.description %>
-           </div> 
+          </div> 
       </div>
       
       <div class="card-footer">
           <div class="d-flex align-items-center justify-content-start">
-            <a href="#" class="card-link" >Like </a>
-            <a href = "#"> <%= link_to 'Comment', post, style: "margin-left:0.5%" %></a>
-            
+            <span class = "like_count" <%post.id%>'>
+              <%= post.get_likes.size %>
+              <i class="fas fa-thumbs-up"></i>
+            </span>
 
+            &nbsp; &nbsp;
+
+            <%# Se l'utente è loggato può visualizzare i tasti per lasciare un like e commentare, altrimenti scompaiono %>
+            <% if user_signed_in? %>
+              <a href="#" class="card-link">
+                <% if current_user.liked? post %>
+                  <div> <%= link_to like_post_path(post, 'unlike'), class: "liked-btn", method: :put, remote: :true do %>
+                    Liked
+                  </div>
+                <% end %>
+                
+                <% else %>
+                  <div> <%= link_to like_post_path(post, 'like'), class: "like-btn", method: :put, remote: :true do %>
+                    Like
+                  </div>
+                <% end %>
+                <% end %>              
+              </a>
+              
+              &nbsp; &nbsp;
+
+              <a href="#" class="card-link">Comment</a>
+              
+            <% end%>
             <p class="card-text ms-auto">
               <span class="badge bg-primary"><%= post.tag%></span> &nbsp; <%= post.position%>
             </p>
-            
-
           </div>
       </div>
     </div>
