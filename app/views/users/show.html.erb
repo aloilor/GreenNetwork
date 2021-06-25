@@ -18,8 +18,10 @@
             lead-in to additional content. This content is a little bit longer.</p>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-3" type="button">
-                <i class="bi bi-gear-fill"></i>  Settings</button>
+            
+             <%= link_to 'Settings', edit_user_registration_path(current_user),
+                class:"bi bi-gear-fill btn btn-default btn-primary " %>  
+                
         </div>
 </div>
      
