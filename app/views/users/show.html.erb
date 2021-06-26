@@ -1,4 +1,9 @@
 <h1>Your Posts</h1>
+<!-- Bottone per creare un nuovo post -->
+<button type="button" class="btn btn-primary btn-lg" style="margin-left:25px"%>
+    <i class="fas fa-plus fa-lg	"></i>
+    <a href = "#"><%= link_to 'New post', new_post_path, style: "color:white; font-weight: bold;" %></a>
+</button>
 
 <div class = "row">
     <div class = "col-8 offset">
@@ -17,8 +22,11 @@
             <h2 class="text-center"><%=current_user.username%></h2>
             <hr>
             <div class="card-body">
-            <h5 class="card-title">Description</h5>
-            <p class="card-text"><%= @description%></p>
+            <% if !current_user.description.present? %>
+                <p class="card-text"><em>Add a description</em></p>
+            <% else %>
+                <p class="card-text" ><h5><em style="color:gray"><%= current_user.description %></em></h5></p>
+            <% end %>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             

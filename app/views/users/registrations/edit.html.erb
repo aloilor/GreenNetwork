@@ -41,11 +41,17 @@
       </div>        
 
       <br>
-      <div class = "col-md-4">
-        <%= f.label :propic, "Upload your profile pic: " %>
-        <%= f.file_field :propic, direct_upload: true, class:"form-control" %>
-      </div>
-      
+      <div class = "row">
+        <div class = "col-md-4">
+          <%= f.label :propic, "Upload your profile pic: " %>
+          <%= f.file_field :propic, direct_upload: true, class:"form-control" %>
+        </div>
+
+        <div class = "col-md-4">
+          <%= f.label :description, class:"col-sm-2 col-form-label"%>
+          <%= f.text_area :description, class:"form-control", size: "70x5" %>
+        </div>
+      </div>  
       <br>
       <div class="col-md-4">
         <%= f.label :current_password, class:"form-label"  %> <i>(we need your current password to confirm your changes)</i><br />
