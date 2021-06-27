@@ -3,11 +3,9 @@
     <div class="card gedf-card" style = "margin-top: 2%; margin-bottom: 1%">
       <div class="card-header">
           <div class="d-flex justify-content-start align-items-center">
-            <span class = "text-muted h7"> Posted by: </span>
-
-            <%# Immagine profilo %>
+           <%# Immagine profilo %>
             <% if post.user.propic.attached? %> 
-              <%= image_tag post.user.propic, style: "width: 55px; height: 55px; margin-left: 2%", class: "rounded-circle border border-success"%>
+              <%= image_tag post.user.propic, style: "width: 55px; height: 55px", class: "rounded-circle border "%>
             <% end %>                    
             
             <%# Nome utente %>
@@ -33,7 +31,7 @@
       <div class="card-footer">
 
           <div class="d-flex align-items-center justify-content-start">
-            <span class = "like_count" <%post.id%>'>
+            <span class = "like_count" <%post.id%>>
               <%= post.get_likes.size %>
               <i class="fas fa-thumbs-up"></i>
             </span>
