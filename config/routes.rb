@@ -9,4 +9,8 @@ Rails.application.routes.draw do
       put "like" => "posts#like"
     end
   end
+
+  as :user do
+    get 'profile', :to => 'devise/registrations#edit', :as => :user_root
+  end
 end
