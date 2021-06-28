@@ -1,25 +1,38 @@
-<h1>Your Posts</h1>
+<h1 class="text-center">Profile</h1>
+<!-- Bottone per creare un nuovo post -->
+<button type="button" class="btn btn-success btn-lg" style="margin-left:25px"%>
+    <i class="fas fa-plus fa-lg	"></i>
+    <a href = "#"><%= link_to 'New post', new_post_path, style: "color:white; font-weight: bold;" %></a>
+</button>
 
 <div class = "row">
     <div class = "col-8 offset">
         <% if @user.posts.any? %>
-            <%= render @posts %>
+            <%= render partial: "posts/post",collection: @user.posts%>
         <% end %>
     </div>
     <div class = "col-4">    
         <div class="card border-0" style="margin-right:50px">
-            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class= "rounded-circle" 
-            style= "width: 200px; height: 200px;margin-left:180px">
+            <% if current_user.propic.attached? %> 
+              <%= image_tag current_user.propic, 
+              style: "width: 200px; height: 200px;margin-left:180px", 
+              class: "rounded-circle border "%>
+            <% end %>    
+           
             <h2 class="text-center"><%=current_user.username%></h2>
             <hr>
             <div class="card-body">
-            <h5 class="card-title">Description</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural 
-            lead-in to additional content. This content is a little bit longer.</p>
+            <% if !current_user.description.present? %>
+                <p class="card-text"><em>Add a description</em></p>
+            <% else %>
+                <p class="card-text" ><h5><em style="color:gray"><%= current_user.description %></em></h5></p>
+            <% end %>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-3" type="button">
-                <i class="bi bi-gear-fill"></i>  Settings</button>
+            
+             <%= link_to 'Settings', edit_user_registration_path(current_user),
+                class:"bi bi-gear-fill btn btn-default btn-primary " %>  
+                
         </div>
 </div>
      

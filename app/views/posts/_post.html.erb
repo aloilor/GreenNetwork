@@ -3,11 +3,9 @@
     <div class="card gedf-card" style = "margin-top: 2%; margin-bottom: 1%">
       <div class="card-header">
           <div class="d-flex justify-content-start align-items-center">
-            <span class = "text-muted h7"> Posted by: </span>
-
-            <%# Immagine profilo %>
+           <%# Immagine profilo %>
             <% if post.user.propic.attached? %> 
-              <%= image_tag post.user.propic, style: "width: 55px; height: 55px; margin-left: 2%", class: "rounded-circle border border-success"%>
+              <%= image_tag post.user.propic, style: "width: 55px; height: 55px", class: "rounded-circle border "%>
             <% end %>                    
             
             <%# Nome utente %>
@@ -17,10 +15,9 @@
 
       <div class="card-body">
       
-          <h2 class="card-title"><b><%= link_to post.title, post %></b></h2>
-
           <p class="text-muted h7 mb-2"><%= post.created_at.strftime("Created at %d/%m/%Y, %I:%M%p") %></p>
-         
+          <h2 class="card-title"><b><%= link_to post.title, post %></b></h2>
+          
           <%# Effettuiamo il check, se l'immagine è effettivamente associata al record, e mostriamola %>
           <% if post.image.attached? %> 
             <%= image_tag post.image, style: "width:35%;", class: "border border-success rounded border-2 float-left", align:"left" %>
@@ -33,7 +30,7 @@
       
       <div class="card-footer">
           <div class="d-flex align-items-center justify-content-start">
-            <span class = "like_count" <%post.id%>'>
+            <span class = "like_count" <%post.id%>>
               <%= post.get_likes.size %>
               <i class="fas fa-thumbs-up"></i>
             </span>

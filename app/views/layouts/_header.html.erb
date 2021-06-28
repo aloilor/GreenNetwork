@@ -1,9 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #F8F8FF">
 
     
     <div class="container-fluid">
         
         <ul class="navbar-nav">
+          <%=image_tag("planet-earth.png",size: "45x45")%>&nbsp;
           <%= link_to 'GreenNetwork', posts_path, class: "navbar-brand mb-0 h1" %>
 
           <li class="nav-item">
@@ -13,32 +14,46 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contacts</a>
           </li>
-
+          
+          
+        
         </ul>
         
 
         <ul class="navbar-nav" >
+          <!--<% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to '', new_post_path,class:"nav-link bi bi bi-plus-circle", 
+                  style: "font-size: 25px; margin-top:5px; margin-right: 7px"%>
+                  
+            </li>
+          <% end %>-->
+
           <li class="nav-item dropdown" style="margin-right:70px">
             
             <% if user_signed_in? %>
+              
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-fill"></i>
-                <%= current_user.username%>
+              <% if current_user.propic.attached? %> 
+                <%= image_tag current_user.propic, size: "45x45", class: "rounded-circle border "%>
+              <% end %>  
+              <%= current_user.username%>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><%= link_to "Profile", profile_path, class:"dropdown-item"%></li>
+            
+                <li><%= link_to " Profile", profile_path, class:"bi bi-person-fill dropdown-item"%></li>
                 <li><a class="dropdown-item" href="#">Administration</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item"%></li>
+                <li><%= link_to " Logout", destroy_user_session_path, method: :delete, class:"bi bi-door-closed-fill dropdown-item "%></li>
               </ul>
             <% else %>
               <li class="nav-item">
-                <%= link_to 'Login', new_user_session_path, :style=>'color:#FFFFFF;'%>
+                <%= link_to 'Login', new_user_session_path, class:"btn btn-outline-success"%>
               </li>
                 &nbsp; &nbsp;
                 
               <li class = "nav-item">
-                <%= link_to 'Sign-up', new_user_registration_path, :style=>'color:#FFFFFF;'%>
+                <%= link_to 'Sign-up', new_user_registration_path,class:"btn btn-outline-success"%>
               </li>
             <%end%>
 
