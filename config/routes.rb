@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+
   get 'comments/new'
   get 'comments/create'
   get 'comments/destroy'
-  devise_for :users
-=======
+
   devise_for :users, controllers: { sessions: 'users/sessions'}
->>>>>>> profile
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "posts#index"
   get "profile", to: "users#show"
