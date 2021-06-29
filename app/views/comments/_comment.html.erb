@@ -1,0 +1,34 @@
+
+<%@post.comments.reverse_order.each do |comment| %>
+    <% if !comment.id.nil? %>
+        <div class="container mt-3">
+            <div class="row d-flex ">
+                <div class="col-md-12">
+                    <div class="card p-3" style="border: none;box-shadow: 5px 6px 6px 2px #e9ecef;border-radius: 4px">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="user d-flex flex-row align-items-center"> 
+                                <img src="https://i.imgur.com/CFpa3nK.jpg" width="30" class="user-img rounded-circle mr-2"> 
+                                <span>
+                                    <small class="font-weight-bold text-primary">User&nbsp; &nbsp;</small> 
+                                    <small class="font-weight-bold"><%= comment.comments %></small>
+                                </span>
+                            </div> 
+                        <small><%= time_ago_in_words(comment.created_at).gsub('about','') + ' ago' %></small>
+                        </div>
+                        <div class="action d-flex justify-content-between mt-2 align-items-center">
+                            
+                            <div class="reply px-4"> 
+                                <small><%= link_to "Edit", edit_post_comment_path(comment.post, comment)  %></small> 
+                                <span class="dots"></span> 
+                                <small><%= link_to 'Delete', [comment.post, comment],
+                                    method: :delete,
+                                    data: { confirm: "Are you sure?" } %></small> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
