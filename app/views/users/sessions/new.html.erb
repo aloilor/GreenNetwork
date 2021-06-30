@@ -13,7 +13,7 @@
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="form-group">
+      <div class="form-group" style="margin-left:25px; margin-top:5px">
         <%= f.check_box :remember_me, class: "form-check-input" %>
         <%= f.label :remember_me, class: "form-check-label" %>
       </div>
@@ -21,15 +21,15 @@
     <br>
 
     <%= f.submit "Log in", class: "btn btn-default btn-success d-grid gap-2 col-6 mx-auto", style: "margin-top: 1.5%" %>
-  <% end %>
-  <div class="d-grid gap-2 col-10 mx-auto">
-      <h5 class="text-center">or</h5>
-      <button type="button" class="btn btn-primary ">
-        <i class="bi bi-facebook"></i>
-         Log in with Facebook
-      </button>
-  </div>
+    <% end %>
+    <div class="d-grid gap-2 col-10 mx-auto">
+        <h5 class="text-center">or</h5>
+        <button type="button" class="btn btn-primary ">
+          <i class="bi bi-facebook"></i>
+            Log in with Facebook
+        </button>
+    </div>
 
-  <br>
-  <%= render "users/shared/links" %>
+    <br>
+    <%= render "users/shared/links" %>
 </div>

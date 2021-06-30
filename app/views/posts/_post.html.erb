@@ -30,12 +30,7 @@
       
       <div class="card-footer">
           <div class="d-flex align-items-center justify-content-start">
-            <span class = "like_count" <%post.id%>>
-              <%= post.get_likes.size %>
-             
-            </span>
-
-            &nbsp; 
+            
             <%# Se l'utente è loggato può visualizzare i tasti per lasciare un like e commentare, altrimenti scompaiono %>
             <% if user_signed_in? %>
               <a href="#" class="card-link">
@@ -48,15 +43,24 @@
                       class: "bi bi-hand-thumbs-up",method: :put, remote: :true do %>
                 <% end %>
               </a>
-            <% end %>              
-              
-              
-              &nbsp; &nbsp;
-              <%= link_to "Comments: ", post, style:"color :black" %>&nbsp;
-              <div style="color:black"> <%= post.comments.nil? ?  0 : post.comments.count%></div>
-              
-              
+              <% end %>              
             <% end%>
+            
+            &nbsp; 
+            
+            <span class = "like_count" <%post.id%>>
+              <% if !user_signed_in? %>
+                <i class= "bi bi-hand-thumbs-up"></i>
+                <%= post.get_likes.size %>
+              <% else %>
+                <%= post.get_likes.size %>
+              <% end %>
+            </span>
+            
+            &nbsp; &nbsp;
+            <%= link_to "", post, style:"color :black", class:"bi bi-chat" %>&nbsp;
+            <div style="color:black"> <%= post.comments.nil? ?  0 : post.comments.count%></div>
+          
             <p class="card-text ms-auto">
               <span class="badge bg-primary"><%= post.tag%></span> &nbsp; <%= post.position%>
             </p>

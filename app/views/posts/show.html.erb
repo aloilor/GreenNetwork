@@ -19,8 +19,9 @@
     <div class="container mt-5 mb-5">
         <div class="d-flex  row">
             <div class="d-flex flex-column col-md-8">
-               
-                <%= render 'comments/form', comment:@comment%>
+                <% if user_signed_in? %>
+                    <%= render 'comments/form', comment:@comment%>
+                <% end %>
                 <%= render 'comments/comment', comment:@comment%>
                 
             </div>

@@ -18,6 +18,7 @@
                         <div class="action d-flex justify-content-between mt-2 align-items-center">
                             
                             <div class="reply px-4"> 
+                                <%# edit e delete %>
                                 <small><%= link_to "", edit_post_comment_path(comment.post, comment), class:"bi bi-pencil-fill"  %></small>
                                 &nbsp;
                                 <small><%= link_to '', [comment.post, comment],
