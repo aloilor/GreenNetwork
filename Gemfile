@@ -51,15 +51,15 @@ group :development do
   gem 'spring'
 end
 
+gem 'rexml'
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-
-  gem 'rexml'
-
+  
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'launchy'
