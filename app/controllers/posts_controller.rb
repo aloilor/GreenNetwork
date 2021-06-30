@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.all.order("created_at DESC").with_attached_image
+        
     end
 
     def new
