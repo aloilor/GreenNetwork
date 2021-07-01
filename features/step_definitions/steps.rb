@@ -8,21 +8,27 @@ Given ('I am on the home page') do
 end
 
 
-Given ('I am not authenticated') do
-    visit new_user_session_path
-end
+# Given ('I am not authenticated') do
+#     visit destroy_user_session_path
+# end
 
-When('I login') do
+Given('I fill my credentials to Login') do 
     fill_in "user_email", with: @user.email
 	fill_in "user_password", with: @user.password
 end
 
-When('I sign up') do
+Given('I fill my credentials to SignUp') do
     @user = User.create!(:username => 'test', :email => 'test@test.com', :password => 'test', :password_confirmation => 'test')
-    # fill_in "user_username", with: @user.username
+    fill_in "user_username", with: @user.username
     fill_in "user_email", with: @user.email
     fill_in "user_password", with: @user.password
     
+end
+
+When('I press button {string} in navbar') do |string|
+    within('.navbar') do
+        click_on(string)
+    end
 end
 
 When('I press button {string}') do |string|
@@ -34,16 +40,14 @@ Then('I should be on {string} page') do |page|
     current_path == page
 end
 
-Then('I should see {string}') do |string|
-    expect(page).to have_content(string)
+Given('I should see {string}') do |string|
+    page.should have_content(string)
+    #expect(page).to have_content(string)
 end
 
 
 # ================== ADD POST ==================
 
-Given('I add a new post') do
-    visit new_post_path
-end
 
 Given('I am authenticated') do
     visit new_user_session_path
@@ -60,3 +64,8 @@ When('I fill in Form title with {string}, {string}, {string}, {string}') do |tit
     
 end
   
+When('I press icon in navbar to add new post') do
+    within('.navbar') do
+        find('#new').click
+    end
+end
