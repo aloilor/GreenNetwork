@@ -30,6 +30,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 #Autorizzazione
 gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth', '~>1.9.1'
+gem 'omniauth-rails_csrf_protection'
 
 #Likes 
 gem 'acts_as_votable'
