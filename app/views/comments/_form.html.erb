@@ -1,0 +1,16 @@
+<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+    <div class="row" style="margin-left:25px">   
+        <div class="col-10">
+            <%= form.text_area :comments, class:"form-control mr-3", :required => true , :placeholder => 'what do you think about it?'%>
+        </div>
+        <div class="col-2 ">
+
+            <%= form.submit "Comment", class: "btn btn-primary " %>  
+        </div>
+    </div>
+<% end %>
+
+                
+                    
+                    
+                
