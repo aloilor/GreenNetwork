@@ -10,4 +10,4 @@ Scenario: Sign up
     And     I fill my credentials to SignUp
     When    I press button "Sign up"
     Then    I should be on "profile" page
-    #And     I should see "Welcome! You have signed up successfully."
+    And     I should see "Welcome! You have signed up successfully."

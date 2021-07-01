@@ -18,10 +18,10 @@ Given('I fill my credentials to Login') do
 end
 
 Given('I fill my credentials to SignUp') do
-    @user = User.create!(:username => 'test', :email => 'test@test.com', :password => 'test', :password_confirmation => 'test')
-    fill_in "user_username", with: @user.username
-    fill_in "user_email", with: @user.email
-    fill_in "user_password", with: @user.password
+    fill_in "user_username", with: 'test'
+    fill_in "user_email", with: 'test@test'
+    fill_in "user_password", with: 'test'
+    fill_in "user_password_confirmation", with: 'test'
     
 end
 
