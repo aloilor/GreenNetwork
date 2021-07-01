@@ -1,105 +1,30 @@
-<div>    
+<div class="container">    
    
     <%= render 'post', post:@post %>
 
-</div>
+    <div class="container d-flex align-items-center" style = "margin-top:0.5%">
 
-<div class="container d-flex align-items-center" style = "margin-top:0.5%">
+        <p class = "h6"> 
 
-    <p class = "h6"> 
+        <%= link_to ' Back', posts_path, class: "bi bi-arrow-left-circle btn btn-default btn-primary " %> 
+        <% if @post.user == current_user %>
+            <%= link_to 'Edit', edit_post_path(@post),class: "btn btn-default btn-primary " %>  
+            <%= link_to 'Delete', post_path(@post.id), 
+                method: :delete, data: { confirm: "Are you sure you want to delete this post?" },
+                class: "bi bi-trash-fill btn btn-default btn-danger "  %>
+        <%end%>
 
-    <%= link_to ' Back', posts_path, class: "bi bi-arrow-left-circle btn btn-default btn-primary " %> 
-    <% if @post.user == current_user %>
-        <%= link_to 'Edit', edit_post_path(@post),class: "btn btn-default btn-primary " %>  
-        <%= link_to 'Delete', post_path(@post.id), 
-            method: :delete, data: { confirm: "Are you sure you want to delete this post?" },
-            class: "bi bi-trash-fill btn btn-default btn-danger "  %>
-    <%end%>
-
-    </p>
-</div>
-
-<div class="d-flex justify-content-between align-items-center">
-<p>
-    <ul>
-        <h1>Comments:</h1>
-    </ul>
-</p>
-</div>
-
-<div class="container">
-<div class="card gedf-card" style = "margin-top: 2%; margin-bottom: 1%">
-        
-        <div class="h5">
-            <% if @post.comments.empty? %>
-                <h3> No comments yet! </h3>
-            <% end %>
-        </div>
-
-        <div class="h5">
-        <%@post.comments.each do |comment| %>
-
-            <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="mr-2">
-                        <%# immagine profilo %>
-                        <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-                    </div>
-
-                    <!-- Nome utente -->
-                        
-                </div>
+        </p>
+    </div>
+    <div class="container mt-5 mb-5">
+        <div class="d-flex  row">
+            <div class="d-flex flex-column col-md-8">
+                <% if user_signed_in? %>
+                    <%= render 'comments/form', comment:@comment%>
+                <% end %>
+                <%= render 'comments/comment', comment:@comment%>
+                
             </div>
         </div>
-	        <p>
-                <ul>
-		            <%= comment.comments %> <br>
-                </ul>
-            </p>
-
-	        <p>
-  	            <ul>
-  	                 <%= link_to "Edit", edit_post_comment_path(comment.post, comment)  %>
-  	                <%= link_to 'Delete', [comment.post, comment],
-                        method: :delete,
-                        data: { confirm: "Are you sure?" } %>
-	                
-	            </ul>
-            </p>
-        
-        <% end %>
-        </div>
-</div>
-</div>
-
-<hr>
-
-<div class="d-flex justify-content-between" style= "margin-left: 14%">
-
-    <ul>
-        <h2>Add a comment </h2>
-    </ul>
-</div>
-
-<div class="container d-flex" style = "margin-top:0.5%; margin-left : 0.5%">
-
-    <%= form_with model: [ @post, @post.comments.build ] do |form| %>
-        <div class="container col-5">
-            <div class="form-floating row mb-3">
-                <div class="row mb-3">
-                    <%= form.label :comments, class:"col-sm-2 col-form-label"%>
-                </div>
-                <div class=" col-sm-10">
-                    <%= form.text_area :comments, class:"form-control", size: "75x4" %>
-                </div>
-            </div>
-            
-        </div>
-        <div class="container" style= "margin-left: 30%">
-            <%= form.submit "Submit", class: "btn btn-default btn-success col-sm-2" %>  
-        </div>
-
-    <% end %>
-
-</div>
+    </div>
+</div>                   

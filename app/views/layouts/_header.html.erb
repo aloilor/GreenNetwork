@@ -14,26 +14,21 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contacts</a>
           </li>
-          
-          
-        
         </ul>
         
 
         <ul class="navbar-nav" >
-          <!--<% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to '', new_post_path,class:"nav-link bi bi bi-plus-circle", 
-                  style: "font-size: 25px; margin-top:5px; margin-right: 7px"%>
-                  
+          
+          <% if user_signed_in? %>
+            <li class="nav-item ">
+              <%= link_to '', new_post_path,class:" nav-link bi bi-plus-lg ",style: "font-size: 25px; margin-top:5px; margin-right: 7px"%>
             </li>
-          <% end %>-->
+          <% end %>
 
           <li class="nav-item dropdown" style="margin-right:70px">
-            
             <% if user_signed_in? %>
-              
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              
               <% if current_user.propic.attached? %> 
                 <%= image_tag current_user.propic, size: "45x45", class: "rounded-circle border "%>
               <% end %>  

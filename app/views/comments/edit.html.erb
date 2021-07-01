@@ -1,12 +1,13 @@
-<h2> Edit a Review </h2>
 
-<%= form_with model: [ @comment.post, @comment ] do |form| %>
-  <p>
-    <%= form.label :comments %><br>
-    <%= form.text_area :comments %>
-  </p>
+<div class="container text-center col-5" style="margin-top:3%">
+  <h2> Update your Comment </h2>
+  <%= form_with model: [ @comment.post, @comment ] do |form| %>
 
-  <p>
-    <%= form.submit "Save Comment" %>
-  </p>
+  <%= form.text_area :comments ,class:"form-control ", :required => true %>
+  <div class="container d-flex align-items-center" style = "margin-top:0.5%;">
+    <%= form.submit "Update" , class:"btn btn-success"%>
+  </div>
+     
+
+</div>
 <% end %>
