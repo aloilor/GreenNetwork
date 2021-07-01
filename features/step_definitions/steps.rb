@@ -40,13 +40,14 @@ Then('I should be on {string} page') do |page|
     current_path == page
 end
 
+
 Given('I should see {string}') do |string|
     page.should have_content(string)
     #expect(page).to have_content(string)
 end
 
 
-# ================== ADD POST ==================
+# ================== POST ==================
 
 
 Given('I am authenticated') do
@@ -56,7 +57,7 @@ Given('I am authenticated') do
     click_on('Log in')
 end
 
-When('I fill in Form title with {string}, {string}, {string}, {string}') do |title, description, position, tag |
+When('I fill in title with {string}, {string}, {string}, {string}') do |title, description, position, tag |
     fill_in "post_title", with: title
     fill_in "post_description", with: description
     fill_in "post_position", with: position
@@ -69,3 +70,15 @@ When('I press icon in navbar to add new post') do
         find('#new').click
     end
 end
+
+When('I press a title of one my Post') do 
+    @post = Post.create!(:title => 'test', :description => 'testtest', :user_id => @user.id)
+    visit  '/posts/' + @post.id.to_s
+   
+end
+
+# Then('I should be on the show post page') do
+#     URI.parse(current_url).path == ('/posts/:' + @post.id.to_s )
+# end
+
+
