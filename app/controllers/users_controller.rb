@@ -3,4 +3,6 @@ class UsersController < ApplicationController
         @user = current_user
         @posts = @user.posts
     end
+
+    
 end
