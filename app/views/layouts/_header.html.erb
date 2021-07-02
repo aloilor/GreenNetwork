@@ -36,7 +36,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             
-                <li><%= link_to " Profile", users_path, class:"bi bi-person-fill dropdown-item"%></li>
+                <li><%= link_to " Profile", profile_path, class:"bi bi-person-fill dropdown-item"%></li>
                 <li><a class="dropdown-item" href="#">Administration</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to " Logout", destroy_user_session_path, method: :delete, class:"bi bi-door-closed-fill dropdown-item "%></li>
