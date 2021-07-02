@@ -11,21 +11,26 @@
             <%# Nome utente %>
             <span class="h5" style = "margin-left: 0.5%; margin-bottom: 1%; margin-top: 1%;"><b><%=post.user.username%></b></span>
           </div>
-      </div>
+       </div>
 
       <div class="card-body">
-      
-          <p class="text-muted h7 mb-2"><%= post.created_at.strftime("Created at %d/%m/%Y, %I:%M%p") %></p>
-          <h2 class="card-title"><b><%= link_to post.title, post %></b></h2>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-row align-items-center"> 
+            <span>
+              <h2 class="card-title"><b><%= link_to post.title, post , style:"color:green;"%></b></h2>          
+            </span>
+        </div> 
+          <p class="text-muted h7 mb-2"><%= post.created_at.strftime("Created at %d/%m/%Y, %I:%M%p") %></p>        
+       </div>
           
-          <%# Effettuiamo il check, se l'immagine è effettivamente associata al record, e mostriamola %>
-          <% if post.image.attached? %> 
-            <%= image_tag post.image, style: "width:35%;", class: "border border-success rounded border-2 float-left", align:"left" %>
-          <% end %>
+        
+          
 
-          <div class="h5" >
-            <%= post.description %>
-          </div> 
+        <%# Effettuiamo il check, se l'immagine è effettivamente associata al record, e mostriamola %>
+        <% if post.image.attached? %> <!--, align:"left"  -->
+          <%= image_tag post.image, style: "width:35%;", class: "border rounded border-2 float-left", align:"left", hspace:"20"%>
+        <% end %>
+        <h5><%= post.description %></h5>
       </div>
       
       <div class="card-footer">
@@ -62,7 +67,7 @@
             <div style="color:black"> <%= post.comments.nil? ?  0 : post.comments.count%></div>
           
             <p class="card-text ms-auto">
-              <span class="badge bg-primary"><%= post.tag%></span> &nbsp; <%= post.position%>
+              <span class="badge bg-success"><%= post.tag%></span> &nbsp; <%= post.position%>
             </p>
           </div>
       </div>
