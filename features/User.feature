@@ -11,7 +11,7 @@ Scenario: Change Username
     And     I fill in username with "new Username" 
     And     I confirm with my password
     When    I press button "Update"
-    Then    I should be on 'users' page
+    Then    I should be on 'profile' page
     And     I should see "Your account has been updated successfully."
     
     

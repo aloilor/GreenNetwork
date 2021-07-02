@@ -82,7 +82,7 @@ end
 # end
 
 Given('I am in my profile page') do
-    visit '/users'
+    visit 'profile'
 end
 
 Given('I fill in username with {string}') do |string|
