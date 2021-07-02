@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "posts#index"
-  get "profile", to: "users#show"
-  
+  # get "profile", to: "users#show"
+  resources :users
   resources :posts do
     resources :comments
     member do
@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  
   as :user do
-    get 'profile', :to => 'devise/registrations#edit', :as => :user_root
+    get 'users', :to => 'users#show', :as => :user_root 
   end
 end

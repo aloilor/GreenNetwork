@@ -3,13 +3,14 @@
     <div class="card gedf-card" style = "margin-top: 2%; margin-bottom: 1%;border: none;box-shadow: 5px 6px 6px 2px #e9ecef;border-radius: 4px"">
       <div class="card-header">
           <div class="d-flex justify-content-start align-items-center">
-           <%# Immagine profilo %>
-            <% if post.user.propic.attached? %> 
+          <%# Immagine profilo %>
+            <% if post.user.propic.attached?  %> 
               <%= image_tag post.user.propic, style: "width: 55px; height: 55px", class: "rounded-circle border "%>
             <% end %>                    
             
             <%# Nome utente %>
             <span class="h5" style = "margin-left: 0.5%; margin-bottom: 1%; margin-top: 1%;"><b><%=post.user.username%></b></span>
+              
           </div>
        </div>
 

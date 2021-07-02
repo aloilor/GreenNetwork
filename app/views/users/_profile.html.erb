@@ -1,10 +1,9 @@
+<h1 class="text-center" style="margin-top:5%">Profile</h1>
 
-
-<div class = "row" style="margin-top:4%">
-<h1 class="text-center">Profile</h1>
+<div class = "row">
     <div class = "col-8 offset">
-        <% if @user.posts.any? %>
-            <%= render partial: "posts/post",collection: @user.posts%>
+        <% if user.posts.any? %>
+            <%= render partial: "posts/post",collection: user.posts%>
         <% end %>
     </div>
     <div class = "col-4">    
@@ -15,19 +14,19 @@
               class: "rounded-circle border "%>
             <% end %>    
            
-            <h2 class="text-center"><%=current_user.username%></h2>
+            <h2 class="text-center"><%=user.username%></h2>
             <hr>
             <div class="card-body">
-            <% if !current_user.description.present? %>
+            <% if !user.description.present? %>
                 <p class="card-text"><em>Add a description</em></p>
             <% else %>
-                <p class="card-text" ><h5><em style="color:gray"><%= current_user.description %></em></h5></p>
+                <p class="card-text" ><h5><em style="color:gray"><%= user.description %></em></h5></p>
             <% end %>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             
-             <%= link_to 'Settings', edit_user_registration_path(current_user),
-                class:"bi bi-gear-fill btn btn-default btn-success " %>  
+             <%= link_to 'Settings', edit_user_registration_path(user),
+                class:"bi bi-gear-fill btn btn-default btn-primary " %>  
                 
         </div>
 </div>

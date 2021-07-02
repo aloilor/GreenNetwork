@@ -21,11 +21,11 @@
           
           <% if user_signed_in? %>
             <li class="nav-item ">
-              <%= link_to '', new_post_path,class:" nav-link bi bi-plus-lg ",style: "font-size: 25px; margin-top:5px; margin-right: 7px"%>
+              <%= link_to '', new_post_path,class:" nav-link bi bi-plus-lg ",style: "font-size: 25px; margin-top:3px; margin-right: 15px"%>
             </li>
           <% end %>
 
-          <li class="nav-item dropdown" >
+          <li class="nav-item dropdown" style="margin-right: 30px">
             <% if user_signed_in? %>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               
@@ -36,7 +36,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             
-                <li><%= link_to " Profile", profile_path, class:"bi bi-person-fill dropdown-item"%></li>
+                <li><%= link_to " Profile", users_path, class:"bi bi-person-fill dropdown-item"%></li>
                 <li><a class="dropdown-item" href="#">Administration</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to " Logout", destroy_user_session_path, method: :delete, class:"bi bi-door-closed-fill dropdown-item "%></li>
