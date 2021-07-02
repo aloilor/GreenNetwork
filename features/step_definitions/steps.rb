@@ -81,4 +81,14 @@ end
 #     URI.parse(current_url).path == ('/posts/:' + @post.id.to_s )
 # end
 
+Given('I am in my profile page') do
+    visit '/users'
+end
 
+Given('I fill in username with {string}') do |string|
+    fill_in "user_username", with: string    
+end
+
+Given('I confirm with my password') do 
+    fill_in "user_current_password", with: @user.password    
+end
