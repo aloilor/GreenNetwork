@@ -2,6 +2,7 @@ Feature: Post
     As an registered user
     I want add a new Post
     I want update a my Post
+    
 
 Scenario: Add a post
     Given   I am a registered user
@@ -24,3 +25,4 @@ Scenario: Update a Post
     And     I press button "Submit"
     Then    I should be on "home" page
     And     I should see "Post updated succesfully"
+ 

@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :posts
   acts_as_voter
   has_one_attached :propic, :dependent => :destroy
+  
 end
