@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'comments/create'
   get 'comments/destroy'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :sessions => "users/sessions" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :sessions => "users/sessions", registrations: "users/registrations" }
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -19,9 +19,9 @@
 
         <ul class="navbar-nav" >
           
-          <% if user_signed_in? %>
+          <% if ( (user_signed_in?) && (can? :create, Post) ) %>
             <li class="nav-item ">
-              <%= link_to '', new_post_path,class:" nav-link bi bi-plus-lg ",style: "font-size: 25px; margin-top:5px; margin-right: 7px"%>
+              <%= link_to '', new_post_path, class:" nav-link bi bi-plus-lg ",style: "font-size: 25px; margin-top:5px; margin-right: 7px"%>
             </li>
           <% end %>
 
@@ -32,12 +32,16 @@
               <% if current_user.propic.attached? %> 
                 <%= image_tag current_user.propic, size: "45x45", class: "rounded-circle border "%>
               <% end %>  
-              <%= current_user.username%>
+              <%= current_user.username%>: 
+                <% if current_user.is_admin? %> Admin 
+                <% elsif current_user.is_reguser? %> User <% end %>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             
                 <li><%= link_to " Profile", profile_path, class:"bi bi-person-fill dropdown-item"%></li>
-                <li><a class="dropdown-item" href="#">Administration</a></li>
+                <% if current_user.is_admin? %>
+                  <li><a class="dropdown-item" href="#">Administration</a></li>
+                <% end %>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to " Logout", destroy_user_session_path, method: :delete, class:"bi bi-door-closed-fill dropdown-item "%></li>
               </ul>

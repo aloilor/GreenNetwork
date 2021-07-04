@@ -33,6 +33,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth', '~>1.9.1'
 gem 'omniauth-rails_csrf_protection'
+gem 'canard', '~> 0.6.2.pre'
 
 #Likes 
 gem 'acts_as_votable'

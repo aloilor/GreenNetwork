@@ -14,6 +14,8 @@ class PostsController < ApplicationController
     end
 
     def create
+        authorize! :create, Post, message: "You are not authorized"
+
         # Associo utente con il post
         @post = current_user.posts.build(post_params)
         @post.image.attach(params[:post][:image])
@@ -35,6 +37,8 @@ class PostsController < ApplicationController
     end
 
     def update 
+        authorize! :update, Post, message: "You are not authorized"
+
         @post = Post.find(params[:id])
 
         #Facciamo in modo che se nel form di edit l'immagine non venga reinserita, venga tenuta la precedente collegata al post
@@ -52,6 +56,8 @@ class PostsController < ApplicationController
     end 
 
     def destroy
+        authorize! :destroy, Post, message: "You are not authorized"
+
         @post = Post.find(params[:id])
         @post.destroy
         
