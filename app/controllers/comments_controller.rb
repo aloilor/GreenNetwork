@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
   def create
+    authorize! :create, Comment, message: "You are not authorized"
+
     @post = Post.find(params[:post_id])
 	  @comment= @post.comments.create(comment_params)
 
@@ -12,6 +14,8 @@ class CommentsController < ApplicationController
   end
 
   def update
+    authorize! :update, Comment, message: "You are not authorized"
+
     @comment = Post.find(params[:post_id]).comments.find(params[:id])
     
     if @comment.update(comment_params)
@@ -22,6 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, Comment, message: "You are not authorized"
 
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
