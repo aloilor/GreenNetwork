@@ -40,7 +40,7 @@
             
                 <li><%= link_to " Profile", profile_path, class:"bi bi-person-fill dropdown-item"%></li>
                 <% if current_user.is_admin? %>
-                  <li><a class="dropdown-item" href="#">Administration</a></li>
+                  <li><%= link_to " Administration", admin_view_path, class:"dropdown-item bi bi-key"%></li> 
                 <% end %>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to " Logout", destroy_user_session_path, method: :delete, class:"bi bi-door-closed-fill dropdown-item "%></li>
