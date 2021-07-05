@@ -4,11 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
-
-  has_many :posts
+  
+  acts_as_user :roles => [:reguser, :admin]
+  has_many :posts, :dependent => :destroy
   acts_as_voter
   has_one_attached :propic, :dependent => :destroy
   
+    
+
+
 def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -23,6 +27,41 @@ def self.from_omniauth(auth)
       end
     end
   end
+
+  
+  #Helper methods per Canard
+  def is_reguser?
+    return (self.roles_mask & 1) == 1
+  end
+
+  def set_reguser
+    self.roles_mask = (self.roles_mask | 1)
+    self.save
+  end
+
+  def unset_reguser
+    self.roles_mask = 0
+    self.save 
+  end 
+
+  def is_admin?
+    return (self.roles_mask & 2) == 2
+  end
+
+  def set_admin
+    self.roles_mask = (self.roles_mask | 2) 
+    self.save
+  end
+
+  def unset_admin
+    self.roles_mask = (self.roles_mask & 1) 
+    self.save
+  end
+
+  def is_banned?
+    return self.roles_mask  == 0
+  end
+  
 
 end
 

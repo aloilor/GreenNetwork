@@ -1,0 +1,47 @@
+<div class = "container" style = "margin-top: 10%">
+    <table class="table table-striped border">
+        <thead>
+            <tr>
+                <th> Email </th>
+                <th> isRegUser </th>
+                <th> isAdmin </th>
+
+                <th> Toggle Ban </th>
+                <th> Toggle Admin </th>
+                <th> Delete profile </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @users.each do |user| %>
+            <tr>
+                <td><%= user.email %></td>
+                <td><%= user.is_reguser? %></td>
+                <td><%= user.is_admin? %></td>
+
+                <td> <% if user.is_banned? %> 
+                    <%= link_to "Click to unban", admin_unban_user_path(user.id), method: :get, data: { confirm: "Are you sure?" }%>
+                    <% else %>
+                    <%= link_to "Click to ban", admin_ban_user_path(user.id), method: :get, data: { confirm: "Are you sure?" } %>
+                    <% end %>
+                </td>
+
+                <td>
+                    <% if user.is_admin? %> 
+                    <%= link_to "Click to remove Admin", admin_unadmin_user_path(user.id), method: :get, data: { confirm: "Are you sure?" } %>
+                    <% else %>
+                    <%= link_to "Click to make Admin", admin_admin_user_path(user.id), method: :get, data: { confirm: "Are you sure?" }%>
+                    <% end %>
+                </td>
+                
+                <td>
+                    <%= link_to " Click to destroy User", 
+                    admin_destroy_user_path(user.id), 
+                    method: :get,
+                    data: { confirm: "Are you sure?" } %>
+                </td>
+            </tr>
+        </tbody>
+        <% end %>
+    </table>
+</div>

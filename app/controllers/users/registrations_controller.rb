@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  after_action :assign_role, only:[:create]
 
   # GET /resource/sign_up
   # def new
@@ -60,5 +61,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  
+
+  def assign_role
+    if not current_user.nil?
+      current_user.set_reguser
+    end
+  end
+
 end
