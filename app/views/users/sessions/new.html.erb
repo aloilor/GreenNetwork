@@ -1,4 +1,4 @@
-<div class="container col-2" style="margin-top:4%">
+<div class="container col-2" style="margin-top:5%">
   <h2>Log in</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -27,8 +27,8 @@
   <div class="d-grid gap-2 col-10 mx-auto">
       <h5 class="text-center">or</h5>
       <button type="button" class="btn btn-primary ">
-        <i class="bi bi-facebook"></i>
-        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, method: :post %>
+        <i class="bi bi-facebook"></i>&nbsp;
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, method: :post, style:"color:white;text-decoration: none;" %>
       </button>
   </div>
 
