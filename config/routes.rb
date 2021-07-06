@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+
+  #static pages (contacts)
+  get "/static_pages/contacts" 
+
+
   get 'comments/new'
   get 'comments/create'
   get 'comments/destroy'
@@ -31,4 +36,5 @@ Rails.application.routes.draw do
   get '/adm/admin/:id', to: 'admins#admin_user', :via => :get, :as => :admin_admin_user
   get '/adm/unadmin/:id', to: 'admins#unadmin_user', :via => :get, :as => :admin_unadmin_user
   get '/adm/destroy/:id', to: 'admins#destroy_user', :via => :get, :as => :admin_destroy_user
+
 end
