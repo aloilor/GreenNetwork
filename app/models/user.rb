@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
   
   acts_as_user :roles => [:reguser, :admin]
+  has_many :comments
   has_many :posts, :dependent => :destroy
   acts_as_voter
   has_one_attached :propic, :dependent => :destroy
@@ -25,7 +26,6 @@ def self.from_omniauth(auth)
       end
     end
   end
-
   
   #Helper methods per Canard
   def is_reguser?
