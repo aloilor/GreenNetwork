@@ -16,15 +16,19 @@
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
-
-        <div class="col-md-4">
-          <%= f.label :password, class:"form-label" %>
-          <% if @minimum_password_length %>
-            <em><%= @minimum_password_length %> characters minimum</em>
-          <% end %>
-          <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
-          
-        </div>
+        
+        <%if current_user.provider != "facebook"%>
+          <div class="col-md-4">
+            <%= f.label :password, class:"form-label" %>
+            <% if @minimum_password_length %>
+              <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+            
+          </div>
+        <% end %>
+        
+        
       </div>
       
       <div class = "row">
@@ -32,14 +36,14 @@
           <%= f.label :username , class:"form-label"%><br />
           <%= f.text_field :username, class:"form-control" %>
         </div>
-
-        <div class="col-md-4">
-          <%= f.label :password_confirmation, class:"form-label" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
-        </div>
-      
+        <%if current_user.provider != "facebook"%>
+          <div class="col-md-4">
+            <%= f.label :password_confirmation, class:"form-label" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+          </div>
+        <% end %>
       </div>        
-
+    
       <br>
       <div class = "row">
         <div class = "col-md-4">
@@ -53,10 +57,14 @@
         </div>
       </div>  
       <br>
-      <div class="col-md-4">
-        <%= f.label :current_password, class:"form-label"  %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control"  %>
-      </div>
+      
+      <%if current_user.provider != "facebook"%>
+        <div class="col-md-4">
+          <%= f.label :current_password, class:"form-label"  %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control"  %>
+        </div>
+      <% end %>
+      
 
       <br>
       <div class="actions">
@@ -65,6 +73,7 @@
     <% end %>
     
     <hr>
+    
     
     <h3>Cancel my account</h3>
 
