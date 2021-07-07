@@ -1,11 +1,15 @@
 class CommentsController < ApplicationController
 
+  def new
+
+  end
   def create
     authorize! :create, Comment, message: "You are not authorized"
 
     @post = Post.find(params[:post_id])
 	  @comment = @post.comments.create(comment_params)
-    @comment = current_user.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    # @comment = current_user.comments.build(comment_params)
     @comment.save
 
     redirect_to post_path(@post)
