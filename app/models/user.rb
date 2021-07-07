@@ -13,6 +13,12 @@ class User < ApplicationRecord
 
 def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.username = auth.info.name
+
+      image_url = "https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512"    
+      downloaded_file = URI.open(image_url)
+
+      user.propic.attach(io: downloaded_file, filename: "facebook.png")
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end
