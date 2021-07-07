@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
   
   acts_as_user :roles => [:reguser, :admin]
-  has_many :comments
+  has_many :comments, :dependent => :destroy
   has_many :posts, :dependent => :destroy
   acts_as_voter
   has_one_attached :propic, :dependent => :destroy
