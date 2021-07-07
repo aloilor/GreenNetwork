@@ -10,8 +10,6 @@ class User < ApplicationRecord
   acts_as_voter
   has_one_attached :propic, :dependent => :destroy
   
-    
-
 
 def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
