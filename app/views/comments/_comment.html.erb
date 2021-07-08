@@ -20,7 +20,7 @@
                             <div class="reply px-4"> 
                                 <%# edit e delete %>
                                 <% if user_signed_in? %>
-                                    <% if (comment.user_id == current_user.id) && (can? :destroy, Comment) && (can? :update, Comment) || (current_user.is_admin?)%>
+                                    <% if (comment.user == current_user) && (can? :destroy, Comment) && (can? :update, Comment) || (current_user.is_admin?)%>
                                         <small><%= link_to "", edit_post_comment_path(comment.post, comment), class:"bi bi-pencil-fill"  %></small>
                                         &nbsp;
                                         <small><%= link_to '', [comment.post, comment],
