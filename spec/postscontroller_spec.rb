@@ -70,34 +70,33 @@ describe PostsController, type: :controller do
             p_tst = Post.where(:title => "Title")
             expect(p_tst).not_to be_empty
         end
+
+        #Update
+        it "should update posts" do
+            ps = posts(:one)
+            params = {:id => ps.id, :post=>{:title => "Title"}}
+            get :update, :params => params
+            p_tst = Post.find(ps.id)
+            expect(p_tst.title).to eql(ps.title)
+        end
+
         #Retrieve (= Show)
         it "should retrieve posts" do
         ps = posts(:one)
         params = {:id => ps.id}
         get :show, :params => params
         expect(assigns(:post)).to eql(ps)
+        end
+        
+        #Delete
+        it "should destroy posts" do
+            ps = posts(:one)
+            params = {:id => ps.id}
+            get :destroy, :params => params
+            p_tst = Post.where(:id => ps.id)
+            expect(p_tst).to be_empty
+        end
+        
     end
-
-
-    #Update
-    it "should update posts" do
-        ps = posts(:one)
-        params = {:id => ps.id, :post=>{:title => "Title"}}
-        get :update, :params => params
-        p_tst = Post.find(ps.id)
-        expect(p_tst.title).to eql(ps.title)
-    end
-
-
-    #Delete
-    it "should destroy posts" do
-        ps = posts(:one)
-        params = {:id => ps.id}
-        get :destroy, :params => params
-        p_tst = Post.where(:id => ps.id)
-        expect(p_tst).to be_empty
-    end
-
-end
 
 end
