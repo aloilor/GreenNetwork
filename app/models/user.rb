@@ -15,7 +15,8 @@ class User < ApplicationRecord
 def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.username = auth.info.name
-
+      
+      require 'open-uri'
       image_url = "https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512"    
       downloaded_file = URI.open(image_url)
 
