@@ -19,7 +19,6 @@ Scenario: Update a Post
     And     I am authenticated
     And     I am on the home page
     When    I press a title of one my Post
-    #Then    I should be on the show post page
     And     I press button "Edit"
     Then    I fill in title with "New Title", "new Description", "new Position Test", "Event"
     And     I press button "Submit"

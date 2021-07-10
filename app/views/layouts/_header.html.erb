@@ -21,7 +21,7 @@
           
           <% if ( (user_signed_in?) && (can? :create, Post) ) %>
             <li class="nav-item ">
-              <%= link_to '', new_post_path, class:" nav-link bi bi-plus-lg ",style: "font-size: 25px; margin-top:5px; margin-right: 7px"%>
+              <%= link_to '', new_post_path, id:'new', class:" nav-link bi bi-plus-lg ",style: "font-size: 25px; margin-top:5px; margin-right: 7px"%>
             </li>
           <% end %>
 

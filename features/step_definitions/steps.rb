@@ -1,16 +1,11 @@
 # ================== LOGIN - SIGNUP ==================
 Given('I am a registered user') do
-    @user = User.create!(:username => 'test', :email => 'test@test.com', :password => 'test', :password_confirmation => 'test')
+    @user = User.create!(:username => 'test', :email => 'test@test.com', :password => 'test', :password_confirmation => 'test', :roles_mask => 1)
 end
 
 Given ('I am on the home page') do
     visit root_path
 end
-
-
-# Given ('I am not authenticated') do
-#     visit destroy_user_session_path
-# end
 
 Given('I fill my credentials to Login') do 
     fill_in "user_email", with: @user.email
@@ -77,9 +72,6 @@ When('I press a title of one my Post') do
    
 end
 
-# Then('I should be on the show post page') do
-#     URI.parse(current_url).path == ('/posts/:' + @post.id.to_s )
-# end
 
 Given('I am in my profile page') do
     visit 'profile'
