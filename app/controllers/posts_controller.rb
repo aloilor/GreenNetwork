@@ -66,6 +66,8 @@ class PostsController < ApplicationController
     end
 
     def like
+        authorize! :create, Post, message: "You are not authorized"
+        
         @post = Post.find(params[:id])
         if params[:format] == 'like'
             @post.liked_by current_user

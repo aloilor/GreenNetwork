@@ -39,23 +39,25 @@
             
             <%# Se l'utente è loggato può visualizzare i tasti per lasciare un like e commentare, altrimenti scompaiono %>
             <% if user_signed_in? %>
-              <a href="#" class="card-link">
-                <% if current_user.liked? post %>
-                  <%= link_to like_post_path(post, 'unlike'), class: "bi bi-hand-thumbs-up-fill ",
-                  style:"color:black", method: :put, remote: :true do %>
-                <% end %>
-                <% else %>
-                  <%= link_to like_post_path(post, 'like'),style:"color:black", 
-                      class: "bi bi-hand-thumbs-up",method: :put, remote: :true do %>
-                <% end %>
-              </a>
-              <% end %>              
+              <% if (can? :create, Post) %>
+                <a href="#" class="card-link">
+                  <% if current_user.liked? post %>
+                    <%= link_to like_post_path(post, 'unlike'), class: "bi bi-hand-thumbs-up-fill ",
+                    style:"color:black", method: :put, remote: :true do %>
+                  <% end %>
+                  <% else %>
+                    <%= link_to like_post_path(post, 'like'),style:"color:black", 
+                        class: "bi bi-hand-thumbs-up",method: :put, remote: :true do %>
+                  <% end %>
+                </a>
+                <% end %>   
+              <% end %>
             <% end%>
             
             &nbsp; 
             
             <span class = "like_count" <%post.id%>>
-              <% if !user_signed_in? %>
+              <% if (!user_signed_in?) || (not can? :create, Post) %>
                 <i class= "bi bi-hand-thumbs-up"></i>
                 <%= post.get_likes.size %>
               <% else %>
