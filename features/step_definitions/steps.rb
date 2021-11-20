@@ -44,7 +44,6 @@ end
 
 # ================== POST ==================
 
-
 Given('I am authenticated') do
     visit new_user_session_path
     fill_in "user_email", with: @user.email
@@ -71,7 +70,6 @@ When('I press a title of one my Post') do
     visit  '/posts/' + @post.id.to_s
    
 end
-
 
 Given('I am in my profile page') do
     visit 'profile'
