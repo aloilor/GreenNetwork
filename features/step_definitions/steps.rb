@@ -68,7 +68,6 @@ end
 When('I press a title of one my Post') do 
     @post = Post.create!(:title => 'test', :description => 'testtest', :user_id => @user.id)
     visit  '/posts/' + @post.id.to_s
-   
 end
 
 Given('I am in my profile page') do
