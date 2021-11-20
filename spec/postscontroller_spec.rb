@@ -22,7 +22,6 @@ describe PostsController, type: :controller do
             banned = users(:banned)
             sign_in banned
         end
-
         #Create
         it "should not create posts" do
             params = {:post=>{:title => "Title", :description => "Description", :tag => "Tag", :position => "Position"}}
@@ -30,7 +29,6 @@ describe PostsController, type: :controller do
             p_tst= Post.where(:title => "Title")
             expect(p_tst).to be_empty
         end
-
         #Retrieve (= Show)
         it "should retrieve posts" do
             ps = posts(:one)
@@ -38,7 +36,6 @@ describe PostsController, type: :controller do
             get :show, :params => params
             expect(assigns(:post)).to eql(ps)
         end
-
         #Update
         it "should not update posts" do
             ps = posts(:one)
