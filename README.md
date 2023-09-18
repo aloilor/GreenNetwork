@@ -104,13 +104,3 @@ L’applicazione consente di accedere ai suddetti contenuti, potendo quindi visu
 
 ### Post Form
 ![Post-form](img/Mockups/Post-form.png)
-
-## User Stories
-
-### Unregistered User
-1. As an Unregistered User I want to be able to sign-up using my email, to become a Registered User.
-2. As an Unregistered User I want to be able to sign-up using Facebook, to become a Registered User.
-3. As an Unregistered User I want to be able to see all the posts in the application. 
-4. As an Unregistered User I want to have a page in which I can get informations on how to contact the application developers.
-
-### Registered User
